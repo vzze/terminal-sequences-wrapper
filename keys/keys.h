@@ -2,6 +2,7 @@
 
 #include <string>
 #include <Windows.h>
+#include <functional>
 
 #include "virtual_keys.h"
 
@@ -145,11 +146,15 @@ namespace console {
 
         extern const defs::i_w ALT;
 
-        enum class MOUSE_KEYS {
-            LEFT_BUTTON = FROM_LEFT_1ST_BUTTON_PRESSED,
-            RIGHT_BUTTON = RIGHTMOST_BUTTON_PRESSED,
+        struct MOUSE_EV {
+            defs::us_w ROW;
+            defs::us_w COLUMN;
+            bool LEFT_CLICK = false;
+            bool RIGHT_CLICK = false;
+            bool SCROLL_UP = false;
+            bool SCROLL_DOWN = false;
         };
 
-        defs::i_w ProcessKeyCode(std::string & code);
+        defs::i_w ProcessKeyCode(std::string & code, std::function<void(MOUSE_EV)> & mouse_ev_callback);
     }
 }

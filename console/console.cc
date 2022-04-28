@@ -54,7 +54,12 @@ bool console::EnableVTMode() {
     if(!GetConsoleMode(hIn, &dwMode))
         return false;
 
-    dwMode |= ENABLE_WINDOW_INPUT | ENABLE_VIRTUAL_TERMINAL_INPUT;
+    dwMode = ENABLE_EXTENDED_FLAGS;
+
+    if(!SetConsoleMode(hIn, dwMode))
+        return false;
+
+    dwMode |= ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT | ENABLE_VIRTUAL_TERMINAL_INPUT;
 
     if(!SetConsoleMode(hIn, dwMode))
         return false;
@@ -107,10 +112,6 @@ bool console::ProcessEvents() {
                 PRESSED = irInBuf[i].Event.KeyEvent.bKeyDown;
             break;
 
-            case MOUSE_EVENT:
-                _mouse_callback(irInBuf[i].Event.MouseEvent);
-            break;
-
             case WINDOW_BUFFER_SIZE_EVENT:
                 _resize_callback(irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X, irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y);
             break;
@@ -118,16 +119,15 @@ bool console::ProcessEvents() {
             case FOCUS_EVENT:
                 _focus_callback(irInBuf[i].Event.FocusEvent.bSetFocus);
             break;
+            default:
+                printf("default");
+            break;
         }
 
     if(!key_code.empty()) {
-                defs::i_w code = keys::ProcessKeyCode(key_code);
+        defs::i_w code = keys::ProcessKeyCode(key_code, _mouse_callback);
 
-        if(PRESSED) {
-            for(auto & c : key_code)
-                printf("%i ", c);
-            printf("\n");
-
+        if(PRESSED && code != (defs::i_w)keys::SPECIAL_KEYS::KEY_ERROR) {
             _key_callback(code);
         }
     }
@@ -143,9 +143,9 @@ void console::SetKeyCallback(std::function<void(defs::i_w)> key_callback) {
     _key_callback = key_callback;
 }
 
-std::function<void(MOUSE_EVENT_RECORD)> console::_mouse_callback = [](MOUSE_EVENT_RECORD code) -> void {};
+std::function<void(console::keys::MOUSE_EV)> console::_mouse_callback = [](console::keys::MOUSE_EV code) -> void {};
 
-void console::SetMouseCallback(std::function<void(MOUSE_EVENT_RECORD)> mouse_callback) {
+void console::SetMouseCallback(std::function<void(console::keys::MOUSE_EV)> mouse_callback) {
     _mouse_callback = mouse_callback; 
 }
 

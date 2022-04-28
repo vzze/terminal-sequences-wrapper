@@ -32,11 +32,16 @@ void PrintStatusLine(const char* const pszMessage, COORD const Size)
 }
 
 void KeyCallback(int code) {
-    printf("%i\n", code);
+    if(code == 'a')
+        printf("This is a test on what happens if the text goes offscreen hope it is long enough for that to happen.");
 }
 
 void ResizeCallback(unsigned int columns, unsigned int rows) {
     printf("%u %u\n", columns, rows);
+}
+
+void MouseCallback(keys::MOUSE_EV event) {
+    printf("COLUMN: %u ROW: %u LEFT_CLICK: %i RIGHT_CLICK: %i SCROLL_UP: %i SCROLL_DOWN: %i\n", event.COLUMN, event.ROW, event.LEFT_CLICK, event.RIGHT_CLICK, event.SCROLL_UP, event.SCROLL_DOWN);
 }
 
 int main() {
@@ -45,6 +50,7 @@ int main() {
 
     console::SetKeyCallback(KeyCallback);
     console::SetWindowBufferResizeCallback(ResizeCallback);
+    console::SetMouseCallback(MouseCallback);
 
     while(console::ProcessEvents()) {
 
