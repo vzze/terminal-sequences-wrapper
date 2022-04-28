@@ -83,6 +83,7 @@ int console::Init() {
 }
 
 int console::Exit() {
+    _close = false;
     console::util::SetScrollingRegionDefault();
     console::text::mod::EraseInDisplay(2);
     console::util::MainScreenBuffer();

@@ -35,11 +35,16 @@ void KeyCallback(int code) {
     printf("%i\n", code);
 }
 
+void ResizeCallback(unsigned int columns, unsigned int rows) {
+    printf("%u %u\n", columns, rows);
+}
+
 int main() {
     if(!console::Init())
         return -1;
 
     console::SetKeyCallback(KeyCallback);
+    console::SetWindowBufferResizeCallback(ResizeCallback);
 
     while(console::ProcessEvents()) {
 
