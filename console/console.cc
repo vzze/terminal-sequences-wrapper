@@ -107,19 +107,15 @@ bool console::ProcessEvents() {
             break;
 
             case MOUSE_EVENT:
-
+                _mouse_callback(irInBuf[i].Event.MouseEvent);
             break;
 
             case WINDOW_BUFFER_SIZE_EVENT:
-
+                _resize_callback(irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X, irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y);
             break;
 
             case FOCUS_EVENT:
-
-            break;
-
-            case MENU_EVENT:
-                
+                _focus_callback(irInBuf[i].Event.FocusEvent.bSetFocus);
             break;
         }
 
@@ -146,14 +142,20 @@ void console::SetKeyCallback(std::function<void(defs::i_w)> key_callback) {
     _key_callback = key_callback;
 }
 
-void console::SetMouseEvent() {
-    
+std::function<void(MOUSE_EVENT_RECORD)> console::_mouse_callback = [](MOUSE_EVENT_RECORD code) -> void {};
+
+void console::SetMouseCallback(std::function<void(MOUSE_EVENT_RECORD)> mouse_callback) {
+    _mouse_callback = mouse_callback; 
 }
 
-void console::SetWindowBufferResizeEvent() {
-    
+std::function<void(console::defs::us_w, console::defs::us_w)> console::_resize_callback = [](console::defs::us_w columns, console::defs::us_w rows) -> void {};
+
+void console::SetWindowBufferResizeCallback(std::function<void(defs::us_w, defs::us_w)> resize_callback) {
+    _resize_callback = resize_callback; 
 }
 
-void console::FocusEvent() {
-    
+std::function<void(bool)> console::_focus_callback = [](bool focus) -> void {};
+
+void console::SetFocusCallback(std::function<void(bool)> focus_callback) {
+    _focus_callback = focus_callback; 
 }

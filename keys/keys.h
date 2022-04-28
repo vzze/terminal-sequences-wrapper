@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <Windows.h>
 
 #include "virtual_keys.h"
 
@@ -143,6 +144,11 @@ namespace console {
         };
 
         extern const defs::i_w ALT;
+
+        enum class MOUSE_KEYS {
+            LEFT_BUTTON = FROM_LEFT_1ST_BUTTON_PRESSED,
+            RIGHT_BUTTON = RIGHTMOST_BUTTON_PRESSED,
+        };
 
         defs::i_w ProcessKeyCode(std::string & code);
     }

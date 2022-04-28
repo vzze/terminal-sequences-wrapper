@@ -28,9 +28,12 @@ namespace console {
     void SetKeyCallback(std::function<void(defs::i_w)> key_callback);
     extern std::function<void(defs::i_w)> _key_callback;
 
-    void SetMouseEvent();
+    void SetMouseCallback(std::function<void(MOUSE_EVENT_RECORD)> mouse_callback);
+    extern std::function<void(MOUSE_EVENT_RECORD)> _mouse_callback;
 
-    void SetWindowBufferResizeEvent();
+    void SetWindowBufferResizeCallback(std::function<void(defs::us_w, defs::us_w)> resize_callback);
+    extern std::function<void(defs::us_w, defs::us_w)> _resize_callback;
 
-    void FocusEvent();
+    void SetFocusCallback(std::function<void(bool)> focus_callback);
+    extern std::function<void(bool)> _focus_callback;
 }
