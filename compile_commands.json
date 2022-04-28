@@ -1,0 +1,7 @@
+[
+    {
+        "directory": "D:\\CB\\Personal\\C++\\wim",
+        "command": "g++ main.cc -std=c++17 -o main",
+        "file": "main.cc"
+    }
+]
