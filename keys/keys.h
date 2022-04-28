@@ -102,8 +102,47 @@ namespace console {
             CTRL_F11 = -52,
             CTRL_F12 = -53,
 
+            ALT_UP_ARROW = -54,
+            ALT_DOWN_ARROW = -55,
+            ALT_RIGHT_ARROW = -56,
+            ALT_LEFT_ARROW = -57,
+
+            CTRL_ALT_UP_ARROW = -58,
+            CTRL_ALT_DOWN_ARROW = -59,
+            CTRL_ALT_RIGHT_ARROW = -60,
+            CTRL_ALT_LEFT_ARROW = -61,
+
+            ALT_INS = -62,
+            ALT_DEL = -63,
+            ALT_HOME = -64,
+            ALT_END = -65,
+            ALT_PGUP = -66,
+            ALT_PGDOWN = -67,
+
+            CTRL_ALT_INS = -68,
+            CTRL_ALT_DEL = -69,
+            CTRL_ALT_HOME = -70,
+            CTRL_ALT_END = -71,
+            CTRL_ALT_PGUP = -72,
+            CTRL_ALT_PGDOWN = -73,
+            
+            CTRL_ALT_F1 = -74,
+            CTRL_ALT_F2 = -75,
+            CTRL_ALT_F3 = -76,
+            CTRL_ALT_F4 = -77,
+            CTRL_ALT_F5 = -78,
+            CTRL_ALT_F6 = -79,
+            CTRL_ALT_F7 = -80,
+            CTRL_ALT_F8 = -81,
+            CTRL_ALT_F9 = -82,
+            CTRL_ALT_F10 = -83,
+            CTRL_ALT_F11 = -84,
+            CTRL_ALT_F12 = -85,
+
             KEY_ERROR = -1602
         };
+
+        extern const defs::i_w ALT;
 
         defs::i_w ProcessKeyCode(std::string & code);
     }

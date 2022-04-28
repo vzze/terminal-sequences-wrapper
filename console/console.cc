@@ -124,11 +124,15 @@ bool console::ProcessEvents() {
         }
 
     if(!key_code.empty()) {
-        for(auto & c : key_code)
-            printf("%i ", c);
-        defs::i_w code = keys::ProcessKeyCode(key_code);
+                defs::i_w code = keys::ProcessKeyCode(key_code);
 
-        _key_callback(code, PRESSED);
+        if(PRESSED) {
+            for(auto & c : key_code)
+                printf("%i ", c);
+            printf("\n");
+
+            _key_callback(code);
+        }
     }
 
     key_code.clear();
@@ -136,9 +140,9 @@ bool console::ProcessEvents() {
     return _close;
 }
 
-std::function<void(console::defs::i_w, bool)> console::_key_callback = [](console::defs::i_w code, bool pressed) -> void {};
+std::function<void(console::defs::i_w)> console::_key_callback = [](console::defs::i_w code) -> void {};
 
-void console::SetKeyCallback(std::function<void(defs::i_w, bool)> key_callback) {
+void console::SetKeyCallback(std::function<void(defs::i_w)> key_callback) {
     _key_callback = key_callback;
 }
 

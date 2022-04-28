@@ -25,8 +25,8 @@ namespace console {
 
     BOOL WINAPI _ctrlCloseHandler(DWORD ctrl_type);
 
-    void SetKeyCallback(std::function<void(defs::i_w, bool)> key_callback);
-    extern std::function<void(defs::i_w, bool)> _key_callback;
+    void SetKeyCallback(std::function<void(defs::i_w)> key_callback);
+    extern std::function<void(defs::i_w)> _key_callback;
 
     void SetMouseEvent();
 

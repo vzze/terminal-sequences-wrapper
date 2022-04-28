@@ -219,5 +219,41 @@ namespace console {
 
         #define CODE_CTRL_SPACE "\x00"
 
+        #define CODE_ALT_UP_ARROW CSI "1;3A"
+        #define CODE_ALT_DOWN_ARROW CSI "1;3B"
+        #define CODE_ALT_RIGHT_ARROW CSI "1;3C"
+        #define CODE_ALT_LEFT_ARROW CSI "1;3D"
+
+        #define CODE_CTRL_ALT_UP_ARROW CSI "1;7A"
+        #define CODE_CTRL_ALT_DOWN_ARROW CSI "1;7B"
+        #define CODE_CTRL_ALT_RIGHT_ARROW CSI "1;7C"
+        #define CODE_CTRL_ALT_LEFT_ARROW CSI "1;7D"
+
+        #define CODE_ALT_INS CSI "2;3~"
+        #define CODE_ALT_DEL CSI "3;3~"
+        #define CODE_ALT_HOME CSI "1;3H"
+        #define CODE_ALT_END CSI "1;3F"
+        #define CODE_ALT_PGUP CSI "5;3~"
+        #define CODE_ALT_PGDOWN CSI "6;3~"
+
+        #define CODE_CTRL_ALT_INS CSI "2;7~"
+        #define CODE_CTRL_ALT_DEL CSI "3;7~"
+        #define CODE_CTRL_ALT_HOME CSI "1;7H"
+        #define CODE_CTRL_ALT_END CSI "1;7F"
+        #define CODE_CTRL_ALT_PGUP CSI "5;7~"
+        #define CODE_CTRL_ALT_PGDOWN CSI "6;7~"
+        
+        #define CODE_CTRL_ALT_F1 CSI "1;7P"
+        #define CODE_CTRL_ALT_F2 CSI "1;7Q"
+        #define CODE_CTRL_ALT_F3 CSI "1;7R"
+        #define CODE_CTRL_ALT_F4 CSI "1;7S"
+        #define CODE_CTRL_ALT_F5 CSI "15;7~"
+        #define CODE_CTRL_ALT_F6 CSI "17;7~"
+        #define CODE_CTRL_ALT_F7 CSI "18;7~"
+        #define CODE_CTRL_ALT_F8 CSI "19;7~"
+        #define CODE_CTRL_ALT_F9 CSI "20;7~"
+        #define CODE_CTRL_ALT_F10 CSI "21;7~"
+        #define CODE_CTRL_ALT_F11 CSI "23;7~"
+        #define CODE_CTRL_ALT_F12 CSI "24;7~"
     }
 }

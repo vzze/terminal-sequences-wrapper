@@ -31,11 +31,8 @@ void PrintStatusLine(const char* const pszMessage, COORD const Size)
     printf(pszMessage); // NOLINT
 }
 
-void KeyCallback(int code, bool pressed) {
-    if(pressed)
-        printf("PRESSED  %i\n", code);
-    else
-        printf("RELEASED %i\n", code);
+void KeyCallback(int code) {
+    printf("%i\n", code);
 }
 
 int main() {
