@@ -84,6 +84,8 @@ int console::Init() {
     if(INPUT_HANDLE == INVALID_HANDLE_VALUE)
         return 0;
 
+    cursor::Position();
+
     return val;
 }
 
@@ -95,24 +97,23 @@ int console::Exit() {
     return 0;
 }
 
-console::defs::us_w console::_columns;
-console::defs::us_w console::_rows;
+console::defs::us_w console::_columns = 0;
+console::defs::us_w console::_rows = 0;
 
 bool console::ProcessEvents() {
-    static DWORD cNumRead, fdwMode, i; 
+    static DWORD cNumRead, i; 
 
     static INPUT_RECORD irInBuf[256];
 
     static std::string key_code = "";
-    static bool PRESSED;
 
     ReadConsoleInput(console::INPUT_HANDLE, irInBuf, 256, &cNumRead);
 
     for(i = 0; i < cNumRead; i++) 
         switch(irInBuf[i].EventType) {
             case KEY_EVENT:
-                key_code += irInBuf[i].Event.KeyEvent.uChar.AsciiChar;
-                PRESSED = irInBuf[i].Event.KeyEvent.bKeyDown;
+                if(irInBuf[i].Event.KeyEvent.bKeyDown)
+                    key_code += irInBuf[i].Event.KeyEvent.uChar.AsciiChar;
             break;
 
             case WINDOW_BUFFER_SIZE_EVENT:
@@ -124,15 +125,12 @@ bool console::ProcessEvents() {
             case FOCUS_EVENT:
                 _focus_callback(irInBuf[i].Event.FocusEvent.bSetFocus);
             break;
-            default:
-                printf("default");
-            break;
         }
 
     if(!key_code.empty()) {
         defs::i_w code = keys::ProcessKeyCode(key_code, _mouse_callback);
 
-        if(PRESSED && code != (defs::i_w)keys::SPECIAL_KEYS::KEY_ERROR) {
+        if(code != (defs::i_w)keys::SPECIAL_KEYS::KEY_ERROR) {
             _key_callback(code);
         }
     }
@@ -172,4 +170,8 @@ console::defs::us_w console::GetColumns() {
 
 console::defs::us_w console::GetRows() {
     return _rows;
+}
+
+void console::CallCloseEvent() {
+    _close = false;
 }

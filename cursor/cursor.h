@@ -1,11 +1,21 @@
 #pragma once
 
+#include <Windows.h>
+
+#include <string>
 #include <iostream>
 
 #include "../defines/defines.h"
+#include "../util/util.h"
 
 namespace console {
     namespace cursor {
+        extern defs::us_w _cursor_row;
+        extern defs::us_w _cursor_column;
+
+        /* Internal function that translates mouse position */
+        void translateDECXCPR();
+
         /* Cursor up by <n> */
         void Up(defs::us_w n = 1);
 
@@ -57,5 +67,8 @@ namespace console {
         
         /* Hide the cursor */
         void Hide();
+
+            /* .first represents columns, .second rows */
+        std::pair<defs::us_w, defs::us_w> GetCursorPosition();
     }
 }

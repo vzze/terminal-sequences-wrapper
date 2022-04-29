@@ -25,6 +25,8 @@ namespace console {
 
     extern defs::us_w _rows;
     extern defs::us_w _columns;
+    
+    void CallCloseEvent();
 
     BOOL WINAPI _ctrlCloseHandler(DWORD ctrl_type);
 

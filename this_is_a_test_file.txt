@@ -1,0 +1,3 @@
+HELLO
+THIS IS TEST
+I sure do hope this line is long enough to fill the entire line on the terminal if not resizing is always an option.

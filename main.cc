@@ -32,15 +32,37 @@ void PrintStatusLine(const char* const pszMessage, COORD const Size)
 }
 
 void KeyCallback(int code) {
-    printf("%i\n", code);
+    if(code == (int)keys::SPECIAL_KEYS::LEFT_ARROWN) {
+        console::cursor::Backward();
+        return;
+    }
+
+    if(code == (int)keys::SPECIAL_KEYS::RIGHT_ARROWN) {
+        console::cursor::Forward();
+        return;
+    }
+
+    if(code == (int)keys::SPECIAL_KEYS::DOWN_ARROWN) {
+        console::cursor::Down();
+        return;
+    }
+
+    if(code == (int)keys::SPECIAL_KEYS::UP_ARROWN) {
+        console::cursor::Up();
+        return;
+    }
+    
+    if(code == 'q') {
+        CallCloseEvent();
+    }
 }
 
 void ResizeCallback(unsigned int columns, unsigned int rows) {
-    printf("%u %u\n", columns, rows);
+
 }
 
 void MouseCallback(keys::MOUSE_EV event) {
-    printf("COLUMN: %u ROW: %u LEFT_CLICK: %i RIGHT_CLICK: %i SCROLL_UP: %i SCROLL_DOWN: %i\n", event.COLUMN, event.ROW, event.LEFT_CLICK, event.RIGHT_CLICK, event.SCROLL_UP, event.SCROLL_DOWN);
+
 }
 
 int main() {
