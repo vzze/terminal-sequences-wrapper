@@ -23,7 +23,13 @@ namespace console {
     bool ProcessEvents();
     extern bool _close;
 
+    extern defs::us_w _rows;
+    extern defs::us_w _columns;
+
     BOOL WINAPI _ctrlCloseHandler(DWORD ctrl_type);
+
+    defs::us_w GetColumns();
+    defs::us_w GetRows();
 
     void SetKeyCallback(std::function<void(defs::i_w)> key_callback);
     extern std::function<void(defs::i_w)> _key_callback;

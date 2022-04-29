@@ -257,7 +257,7 @@ namespace console {
         #define CODE_CTRL_ALT_F12 CSI "24;7~"
 
         /* Mouse codes are incomplete. Each complete code will have the form of
-        CODE;X;Ym | CODE;X;Y;M */
+        CODE ;X ; Y m | CODE ; X ; Y M */
         #define CODE_MOUSE_COORD CSI "<35"
         #define CODE_LEFT_CLICK CSI "<0"
         #define CODE_RIGHT_CLICK CSI "<2"

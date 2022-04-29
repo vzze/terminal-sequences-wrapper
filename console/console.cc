@@ -95,6 +95,9 @@ int console::Exit() {
     return 0;
 }
 
+console::defs::us_w console::_columns;
+console::defs::us_w console::_rows;
+
 bool console::ProcessEvents() {
     static DWORD cNumRead, fdwMode, i; 
 
@@ -113,6 +116,8 @@ bool console::ProcessEvents() {
             break;
 
             case WINDOW_BUFFER_SIZE_EVENT:
+                _columns = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X;
+                _rows = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y;
                 _resize_callback(irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X, irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y);
             break;
 
@@ -159,4 +164,12 @@ std::function<void(bool)> console::_focus_callback = [](bool focus) -> void {};
 
 void console::SetFocusCallback(std::function<void(bool)> focus_callback) {
     _focus_callback = focus_callback; 
+}
+
+console::defs::us_w console::GetColumns() {
+    return _columns;
+}
+
+console::defs::us_w console::GetRows() {
+    return _rows;
 }

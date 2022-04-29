@@ -32,8 +32,7 @@ void PrintStatusLine(const char* const pszMessage, COORD const Size)
 }
 
 void KeyCallback(int code) {
-    if(code == 'a')
-        printf("This is a test on what happens if the text goes offscreen hope it is long enough for that to happen.");
+    printf("%i\n", code);
 }
 
 void ResizeCallback(unsigned int columns, unsigned int rows) {
