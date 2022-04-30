@@ -141,6 +141,30 @@ namespace console {
             CTRL_ALT_F11 = -84,
             CTRL_ALT_F12 = -85,
 
+            SHIFT_UP_ARROW = -86,
+            SHIFT_DOWN_ARROW = -87,
+            SHIFT_RIGHT_ARROW = -88,
+            SHIFT_LEFT_ARROW = -89,
+
+            SHIFT_DEL = -90,
+            SHIFT_HOME = -91,
+            SHIFT_END = -92,
+            SHIFT_PGUP = -93,
+            SHIFT_PGDOWN = -94,
+            
+            SHIFT_F1 = -95,
+            SHIFT_F2 = -96,
+            SHIFT_F3 = -97,
+            SHIFT_F4 = -98,
+            SHIFT_F5 = -99,
+            SHIFT_F6 = -100,
+            SHIFT_F7 = -101,
+            SHIFT_F8 = -102,
+            SHIFT_F9 = -103,
+            SHIFT_F10 = -104,
+            SHIFT_F11 = -105,
+            SHIFT_F12 = -106,
+
             KEY_ERROR = -1602
         };
 

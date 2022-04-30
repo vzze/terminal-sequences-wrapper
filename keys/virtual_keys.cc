@@ -105,5 +105,29 @@ const std::vector<console::vkeys::key> console::vkeys::virtual_keys = {
     console::vkeys::key(CODE_CTRL_ALT_F9, -82),
     console::vkeys::key(CODE_CTRL_ALT_F10, -83),
     console::vkeys::key(CODE_CTRL_ALT_F11, -84),
-    console::vkeys::key(CODE_CTRL_ALT_F12, -85)
+    console::vkeys::key(CODE_CTRL_ALT_F12, -85),
+
+    console::vkeys::key(CODE_SHIFT_UP_ARROW, -86),
+    console::vkeys::key(CODE_SHIFT_DOWN_ARROW, -87),
+    console::vkeys::key(CODE_SHIFT_RIGHT_ARROW, -88),
+    console::vkeys::key(CODE_SHIFT_LEFT_ARROW, -89),
+
+    console::vkeys::key(CODE_SHIFT_DEL, -90),
+    console::vkeys::key(CODE_SHIFT_HOME, -91),
+    console::vkeys::key(CODE_SHIFT_END, -92),
+    console::vkeys::key(CODE_SHIFT_PGUP, -93),
+    console::vkeys::key(CODE_SHIFT_PGDOWN, -94),
+    
+    console::vkeys::key(CODE_SHIFT_F1, -95),
+    console::vkeys::key(CODE_SHIFT_F2, -96),
+    console::vkeys::key(CODE_SHIFT_F3, -97),
+    console::vkeys::key(CODE_SHIFT_F4, -98),
+    console::vkeys::key(CODE_SHIFT_F5, -99),
+    console::vkeys::key(CODE_SHIFT_F6, -100),
+    console::vkeys::key(CODE_SHIFT_F7, -101),
+    console::vkeys::key(CODE_SHIFT_F8, -102),
+    console::vkeys::key(CODE_SHIFT_F9, -103),
+    console::vkeys::key(CODE_SHIFT_F10, -104),
+    console::vkeys::key(CODE_SHIFT_F11, -105),
+    console::vkeys::key(CODE_SHIFT_F12, -106)
 };

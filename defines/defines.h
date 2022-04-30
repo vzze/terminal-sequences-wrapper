@@ -256,6 +256,30 @@ namespace console {
         #define CODE_CTRL_ALT_F11 CSI "23;7~"
         #define CODE_CTRL_ALT_F12 CSI "24;7~"
 
+        #define CODE_SHIFT_UP_ARROW CSI "1;2A"
+        #define CODE_SHIFT_DOWN_ARROW CSI "1;2B"
+        #define CODE_SHIFT_RIGHT_ARROW CSI "1;2C"
+        #define CODE_SHIFT_LEFT_ARROW CSI "1;2D"
+
+        #define CODE_SHIFT_DEL CSI "3;2~"
+        #define CODE_SHIFT_HOME CSI "1;2H"
+        #define CODE_SHIFT_END CSI "1;2F"
+        #define CODE_SHIFT_PGUP CSI "5;2~"
+        #define CODE_SHIFT_PGDOWN CSI "6;2~"
+        
+        #define CODE_SHIFT_F1 CSI "1;2P"
+        #define CODE_SHIFT_F2 CSI "1;2Q"
+        #define CODE_SHIFT_F3 CSI "1;2R"
+        #define CODE_SHIFT_F4 CSI "1;2S"
+        #define CODE_SHIFT_F5 CSI "15;2~"
+        #define CODE_SHIFT_F6 CSI "17;2~"
+        #define CODE_SHIFT_F7 CSI "18;2~"
+        #define CODE_SHIFT_F8 CSI "19;2~"
+        #define CODE_SHIFT_F9 CSI "20;2~"
+        #define CODE_SHIFT_F10 CSI "21;2~"
+        #define CODE_SHIFT_F11 CSI "23;2~"
+        #define CODE_SHIFT_F12 CSI "24;2~"
+
         /* Mouse codes are incomplete. Each complete code will have the form of
         CODE ;X ; Y m | CODE ; X ; Y M */
         #define CODE_MOUSE_COORD CSI "<35"
