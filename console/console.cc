@@ -31,6 +31,8 @@ BOOL console::_ctrlCloseHandler(DWORD ctrl_type) {
 }
 
 bool console::EnableVTMode() {
+    console::util::SoftReset();
+
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     
     if(hOut == INVALID_HANDLE_VALUE)
@@ -94,6 +96,7 @@ int console::Exit() {
     console::util::SetScrollingRegionDefault();
     console::text::mod::EraseInDisplay(2);
     console::util::MainScreenBuffer();
+    console::util::SoftReset();
     return 0;
 }
 
@@ -129,8 +132,6 @@ bool console::ProcessEvents() {
 
     if(!key_code.empty()) {
         defs::i_w code = keys::ProcessKeyCode(key_code, _mouse_callback);
-
-        printf("%i\n", code);
 
         if(code != (defs::i_w)keys::SPECIAL_KEYS::KEY_ERROR) {
             _key_callback(code);

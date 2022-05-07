@@ -29,52 +29,42 @@ void console::cursor::translateDECXCPR() {
 }
 
 void console::cursor::Up(defs::us_w n) {
-    translateDECXCPR();
     printf(CUU, n);
 }
 
 void console::cursor::Down(defs::us_w n) {
-    translateDECXCPR();
     printf(CUD, n);
 }
 
 void console::cursor::Forward(defs::us_w n) {
-    translateDECXCPR();
     printf(CUF, n);
 }
 
 void console::cursor::Backward(defs::us_w n) {
-    translateDECXCPR();
     printf(CUB, n);
 }
 
 void console::cursor::NextLine(defs::us_w n) {
-    translateDECXCPR();
     printf(CNL, n);
 }
 
 void console::cursor::PreviousLine(defs::us_w n) {
-    translateDECXCPR();
     printf(CPL, n);
 }
 
 void console::cursor::HorizontalAbsolute(defs::us_w n) {
-    translateDECXCPR();
     printf(CHA, n);
 }
 
 void console::cursor::VerticalLinePositionAbsolute(defs::us_w n) {
-    translateDECXCPR();
     printf(VPA, n);
 }
 
 void console::cursor::Position(defs::us_w y, defs::us_w x) {
-    translateDECXCPR();
     printf(CUP, y, x);
 }
 
 void console::cursor::HorizontalVerticalPosition(defs::us_w y, defs::us_w x) {
-    translateDECXCPR();
     printf(HVP, y, x);
 }
 
@@ -103,5 +93,6 @@ void Hide() {
 }
 
 std::pair<console::defs::us_w, console::defs::us_w> console::cursor::GetCursorPosition() {
+    translateDECXCPR();
     return { _cursor_column, _cursor_row };
 }
