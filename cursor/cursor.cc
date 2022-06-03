@@ -76,19 +76,19 @@ void console::cursor::Restore() {
     printf(ANSISYSSCR);
 }
 
-void EnableBlinking() {
+void console::cursor::EnableBlinking() {
     printf(ATT160E);
 }
 
-void DisableBlinking() {
+void console::cursor::DisableBlinking() {
     printf(ATT160D);
 } 
 
-void Show() {
+void console::cursor::Show() {
     printf(DECTCEMS);
 }
 
-void Hide() {
+void console::cursor::Hide() {
     printf(DECTCEMH);
 }
 
