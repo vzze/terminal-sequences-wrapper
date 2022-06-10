@@ -121,11 +121,9 @@ bool console::ProcessEvents() {
             break;
 
             case WINDOW_BUFFER_SIZE_EVENT:
-                if(_columns != irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X || _rows != irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y) {
-                    _columns = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X;
-                    _rows = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y;
-                    _resize_callback(irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X, irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y);
-                }
+                _columns = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X;
+                _rows = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y;
+                _resize_callback(irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X, irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y);
             break;
 
             case FOCUS_EVENT:
