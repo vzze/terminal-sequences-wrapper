@@ -95,8 +95,9 @@ int console::Exit() {
     _close = false;
     console::util::SetScrollingRegionDefault();
     console::text::mod::EraseInDisplay(2);
-    console::util::MainScreenBuffer();
     console::util::SoftReset();
+    console::util::MainScreenBuffer();
+    console::text::mod::EraseInDisplay(2);
     return 0;
 }
 
@@ -120,9 +121,11 @@ bool console::ProcessEvents() {
             break;
 
             case WINDOW_BUFFER_SIZE_EVENT:
-                _columns = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X;
-                _rows = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y;
-                _resize_callback(irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X, irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y);
+                if(_columns != irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X || _rows != irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y) {
+                    _columns = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X;
+                    _rows = irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y;
+                    _resize_callback(irInBuf[i].Event.WindowBufferSizeEvent.dwSize.X, irInBuf[i].Event.WindowBufferSizeEvent.dwSize.Y);
+                }
             break;
 
             case FOCUS_EVENT:
