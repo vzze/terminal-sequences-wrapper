@@ -97,7 +97,6 @@ int console::Exit() {
     console::text::mod::EraseInDisplay(2);
     console::util::SoftReset();
     console::util::MainScreenBuffer();
-    console::text::mod::EraseInDisplay(2);
     return 0;
 }
 
@@ -107,11 +106,11 @@ console::defs::us_w console::_rows = 0;
 bool console::ProcessEvents() {
     static DWORD cNumRead, i; 
 
-    static INPUT_RECORD irInBuf[256];
+    static INPUT_RECORD irInBuf[512];
 
     static std::string key_code = "";
 
-    ReadConsoleInput(console::INPUT_HANDLE, irInBuf, 256, &cNumRead);
+    ReadConsoleInput(console::INPUT_HANDLE, irInBuf, 512, &cNumRead);
 
     for(i = 0; i < cNumRead; i++) 
         switch(irInBuf[i].EventType) {
