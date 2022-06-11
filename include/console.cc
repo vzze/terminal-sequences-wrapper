@@ -97,6 +97,7 @@ int console::Exit() {
     console::text::mod::EraseInDisplay(2);
     console::util::SoftReset();
     console::util::MainScreenBuffer();
+    console::util::SoftReset();
     return 0;
 }
 
