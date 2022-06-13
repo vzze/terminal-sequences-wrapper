@@ -43,7 +43,7 @@ bool console::EnableVTMode() {
     if(!GetConsoleMode(hOut, &dwMode))
         return false;
 
-    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING | DISABLE_NEWLINE_AUTO_RETURN;
 
     if(!SetConsoleMode(hOut, dwMode))
         return false;
